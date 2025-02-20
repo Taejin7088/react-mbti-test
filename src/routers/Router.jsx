@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../pages/Home';
 import Profile from '../pages/Profile';
 import Login from '../pages/Login';
@@ -39,13 +39,11 @@ const publicRoute = () => {
 
 const Router = () => {
   return (
-    <BrowserRouter>
-      <Routes element={<Home />}>
-        <Route path='/' element={<Home />} />
-        {privateRoute()}
-        {publicRoute()}
-      </Routes>
-    </BrowserRouter>
+    <Routes element={<Home />}>
+      <Route path='/' element={<Home />} />
+      {privateRoute()}
+      {publicRoute()}
+    </Routes>
   );
 };
 
