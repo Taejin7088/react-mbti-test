@@ -1,10 +1,10 @@
-import './App.css';
-import Route from './routes/Route';
+import Router from './routers/Router';
 
 function App() {
   return (
     <>
-      <Route />
+      <h1>아아아ㅏ</h1>
+      <Router />
     </>
   );
 }
