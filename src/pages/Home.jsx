@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <main className='flex flex-col items-center'>
+    <section className='flex flex-col items-center'>
       <section className='text-[40px] font-black m-[30px] '>
         무료성격테스트
       </section>
@@ -39,7 +39,7 @@ const Home = () => {
           내 성격 알아보러 가기
         </button>
       </section>
-    </main>
+    </section>
   );
 };
 

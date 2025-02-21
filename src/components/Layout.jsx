@@ -11,7 +11,8 @@ const Layout = ({ children }) => {
           <div className='m-[30px]  text-red-500'>로그인</div>
         </Link>
       </header>
-      <div className='bg-gray-100 h-[calc(100vh-60px)]'>{children}</div>
+
+      <main className='bg-gray-100 flex-1'>{children}</main>
       <footer />
     </>
   );
