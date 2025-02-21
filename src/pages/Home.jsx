@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -35,9 +36,12 @@ const Home = () => {
       </section>
 
       <section className='m-[30px]'>
-        <button className='pt-3 pb-3 pl-7 pr-7 bg-red-500 rounded-full text-white'>
+        <Link
+          to={'/test'}
+          className='pt-3 pb-3 pl-7 pr-7 bg-red-500 rounded-full text-white'
+        >
           내 성격 알아보러 가기
-        </button>
+        </Link>
       </section>
     </section>
   );
