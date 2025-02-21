@@ -1,26 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AuthForm from '../components/AuthForm';
 
 const Signup = () => {
   return (
-    <section className='flex flex-col bg-white w-[600px] mr-auto ml-auto mt-10 items-center'>
+    <section className='flex flex-col bg-white mr-auto ml-auto items-center rounded-xl w-[100%] h-[100%] md:w-[50%] md:mt-10 md:h-auto'>
       <h1 className='text-[40px] p-[20px]'>회원가입</h1>
 
-      <div className='bg-gray-100 p-4 rounded-md'>
-        <form
-          className='flex flex-col w-[500px] p-4 rounded-md gap-7'
-          action='submit'
-        >
-          <input
-            type='text'
-            placeholder='아이디'
-            className='bg-white border rounded-md p-5'
-          />
-          <input
-            type='password'
-            placeholder='비밀번호'
-            className='bg-white border rounded-md p-5'
-          />
+      <div className='bg-gray-100 w-[90%] p-4 rounded-md'>
+        <form className='flex flex-col p-4 rounded-md gap-7' action='submit'>
+          <AuthForm />
           <input
             type='password'
             placeholder='닉네임'
