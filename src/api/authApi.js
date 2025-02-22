@@ -18,3 +18,17 @@ export const register = async (userDate) => {
     return error;
   }
 };
+
+export const updataProfile = async (formData) => {
+  try {
+    const { data } = await axios.patch(AUTH_API_URL + '/profile', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    });
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
