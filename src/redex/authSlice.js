@@ -1,21 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isLogin: false,
-  userName: '',
+  isLogin: !!sessionStorage.getItem('token'),
+  nickname: sessionStorage.getItem('nickname'),
 };
 const auth = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setIsLogin: (state, { payload }) => {
-      state.isLogin = payload;
-    },
     setUserInfo: (state, { payload }) => {
-      state.userName = payload;
+      state.nickname = payload;
+      state.isLogin = !!sessionStorage.getItem('token');
     },
   },
 });
-
+// setIsLogin,setUserInfo
 export const { setIsLogin, setUserInfo } = auth.actions;
 export default auth.reducer;
