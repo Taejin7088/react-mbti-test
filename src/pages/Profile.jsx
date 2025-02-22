@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updataProfile } from '../api/authApi';
 import { setUserInfo } from '../redex/authSlice';
@@ -9,6 +9,7 @@ const Profile = () => {
   const [inputNickname, setInputNickname] = useState(userInfo.nickname);
 
   const disPatch = useDispatch();
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
@@ -35,7 +36,7 @@ const Profile = () => {
           className='flex flex-col p-4 rounded-md gap-7'
           action='submit'
         >
-          <label htmlFor='nickname'>닉네임</label>
+          <label htmlFor='nickname'>현재 닉네임 : {userInfo.nickname}</label>
           <input
             id='nickname'
             type='text'
