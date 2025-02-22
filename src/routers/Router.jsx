@@ -18,7 +18,7 @@ const PrivateRoute = ({ isLogin }) => {
 const PublicRoute = ({ isLogin }) => {
   //해당 페이지에 접근하는데 로그인 했으면 마이페이지로 보냄
   if (isLogin) {
-    return <Navigate to='/profile' replace />;
+    return <Navigate to='/' replace />;
   }
   return <Outlet />;
 };

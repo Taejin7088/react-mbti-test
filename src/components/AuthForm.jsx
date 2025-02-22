@@ -3,6 +3,7 @@ import { LOGIN, SIGNUP } from '../constants/mode';
 import { login, register } from '../api/authApi';
 import { useDispatch } from 'react-redux';
 import { setUserInfo } from '../redex/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const AuthForm = ({ mode, children }) => {
   const [inputData, setInputData] = useState({
@@ -12,20 +13,29 @@ const AuthForm = ({ mode, children }) => {
   });
 
   const disPatch = useDispatch();
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
       if (mode === LOGIN) {
         const data = await login(inputData);
+        if (data.code) {
+          throw data;
+        }
         sessionStorage.setItem('token', data.accessToken);
         sessionStorage.setItem('nickname', data.nickname);
-        disPatch(setUserInfo(data.nickname));
+        sessionStorage.setItem('userId', data.userId);
+        disPatch(setUserInfo(data));
         alert('로그인성공');
       }
       if (mode === SIGNUP) {
-        await register(inputData);
-        alert('회원가입성공');
+        const data = await register(inputData);
+        if (data.code) {
+          throw data;
+        }
+        alert('회원가입성공, 로그인 페이지로 이동합니다.');
+        navigate('/login');
       }
     } catch (error) {
       alert(error.response.data.message);
