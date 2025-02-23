@@ -20,7 +20,7 @@ const Results = () => {
   }, [posts]);
 
   const deleteHandler = async (id) => {
-    //여기 어웨이트 있어야하는지도
+    //여기 어웨이트 있어야하는지도 물어보기
     await deleteTestResult(id);
     //필터로 바꾼 배열을 넣는게 좋은지 아니면 그냥 데이터요청해서 불러오는게 좋은지
     setPosts([]);
