@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { getTestResults } from '../api/mbtiApi';
+import { deleteTestResult, getTestResults } from '../api/mbtiApi';
 import { mbtiDescriptions } from '../data/mbtiDescriptions';
+import { useSelector } from 'react-redux';
 
 const Results = () => {
+  const { userId } = useSelector((state) => state.auth);
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const getData = async () => {
@@ -10,7 +12,12 @@ const Results = () => {
       setPosts(data);
     };
     getData();
-  }, []);
+  }, [posts]);
+
+  const deleteHandler = async (id) => {
+    await deleteTestResult(id);
+    setPosts([]);
+  };
 
   return (
     <section className='flex flex-col bg-white mx-auto items-center rounded-xl w-[100%] h-[100%] md:w-[90%] md:mt-10 md:h-auto'>
@@ -32,14 +39,23 @@ const Results = () => {
               <div className='text-gray-200 m-4'>
                 {mbtiDescriptions[post.mbti]}
               </div>
-              <div className='mb-7 flex gap-6 justify-end mr-5'>
-                <button className='text-white py-3 md:px-5 px-3 bg-blue-500 rounded-xl'>
-                  비공개로 전환
-                </button>
-                <button className='text-white py-3 md:px-5 px-3 bg-red-500 rounded-xl'>
-                  삭제
-                </button>
-              </div>
+              {userId === post.userId ? (
+                <div className='mb-5 flex gap-6 justify-end mr-5'>
+                  <button className='text-white py-3 md:px-5 px-3 bg-blue-500 rounded-xl'>
+                    비공개로 전환
+                  </button>
+                  <button
+                    onClick={() => {
+                      deleteHandler(post.id);
+                    }}
+                    className='text-white py-3 md:px-5 px-3 bg-red-500 rounded-xl'
+                  >
+                    삭제
+                  </button>
+                </div>
+              ) : (
+                <div className='m-3' />
+              )}
             </div>
           </div>
         );
