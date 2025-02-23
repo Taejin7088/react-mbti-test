@@ -5,7 +5,7 @@ import { mbtiDescriptions } from '../data/mbtiDescriptions';
 import { useSelector } from 'react-redux';
 import { createTestResult } from '../api/mbtiApi';
 
-const TestForm = ({ setUserMbtiDescription }) => {
+const TestForm = ({ setUserMbti }) => {
   const [answers, setAnswer] = useState({});
   const { userId, nickname } = useSelector((state) => state.auth);
 
@@ -54,7 +54,7 @@ const TestForm = ({ setUserMbtiDescription }) => {
     await createTestResult(testResult);
 
     //해당하는 mbti에 설명을 리턴해주는 함수
-    setUserMbtiDescription(mbtiDescriptions[mbti]);
+    setUserMbti(mbti);
   };
 
   return (

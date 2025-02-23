@@ -72,7 +72,7 @@ const Results = () => {
                     </button>
                   </div>
                 ) : (
-                  <div key={post.id} className='m-3' />
+                  <div className='m-3' />
                 )}
               </div>
             </div>
@@ -80,7 +80,7 @@ const Results = () => {
         }
 
         //작성한 유저가 아니고, isPublic이 false면 포스터 안그림
-        return <></>;
+        return <div key={post.id}></div>;
       })}
     </section>
   );
