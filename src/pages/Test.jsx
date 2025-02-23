@@ -14,7 +14,7 @@ const Test = () => {
           <div className='py-7 mt-8 text-3xl font-semibold'>
             테스트 결과 : {userMbtiDescription.slice(0, 4)}
           </div>
-          <div className='py-7 text-3xl'>{userMbtiDescription}</div>
+          <div className='py-7 mb:text-3xl'>{userMbtiDescription}</div>
         </div>
         <button className='bg-red-500 border rounded-md w-[50%] p-5 m-5 mb-[50px] text-white'>
           결과 페이지로 이동하기

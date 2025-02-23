@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { questions } from '../data/questions';
 import { calculateMBTI } from '../utils/mbtiCalculator';
 import { mbtiDescriptions } from '../data/mbtiDescriptions';
+import { useSelector } from 'react-redux';
+import { createTestResult } from '../api/mbtiApi';
 
 const TestForm = ({ setUserMbtiDescription }) => {
   const [answers, setAnswer] = useState({});
+  const { userId, nickname } = useSelector((state) => state.auth);
 
   //체크박스와 라벨을 눌렀을때 핸들러
   const checkAnserHandler = (e, question) => {
@@ -38,6 +41,17 @@ const TestForm = ({ setUserMbtiDescription }) => {
 
     //결과값으로 mbti 계산하는 함수
     const mbti = calculateMBTI(resultAnswers);
+
+    const now = new Date();
+    const formattedDate = now.toLocaleString('ko-KR');
+    const testResult = {
+      time: formattedDate,
+      nickname: nickname,
+      userId: userId,
+      isPublic: false,
+      mbti: mbti,
+    };
+    createTestResult(testResult);
 
     //해당하는 mbti에 설명을 리턴해주는 함수
     setUserMbtiDescription(mbtiDescriptions[mbti]);
