@@ -8,7 +8,6 @@ export const getTestResults = async () => {
 
 export const createTestResult = async (resultData) => {
   const response = await axios.post(MBTI_API_URL, resultData);
-  return response.data;
 };
 
 export const deleteTestResult = async (id) => {};

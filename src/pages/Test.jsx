@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import TestForm from '../components/TestForm';
+import { Link } from 'react-router-dom';
 
 const Test = () => {
   //테스트결과를 제출하지 않아서 값이 비어 있으면 테스트보여주고
@@ -16,9 +17,12 @@ const Test = () => {
           </div>
           <div className='py-7 mb:text-3xl'>{userMbtiDescription}</div>
         </div>
-        <button className='bg-red-500 border rounded-md w-[50%] p-5 m-5 mb-[50px] text-white'>
-          결과 페이지로 이동하기
-        </button>
+        <Link
+          className='bg-red-500 border rounded-md w-[50%] p-5 m-5 mb-[50px] text-white flex justify-center items-center'
+          to='/results'
+        >
+          <button className=''>결과 페이지로 이동하기</button>
+        </Link>
       </section>
     </>
   ) : (
