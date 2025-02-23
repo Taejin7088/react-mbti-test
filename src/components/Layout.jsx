@@ -12,6 +12,7 @@ const Layout = ({ children }) => {
         <Link to={'/'}>
           <div className='m-[30px] text-red-500'>홈</div>
         </Link>
+
         {isLogin ? (
           <LoginUserHeader />
         ) : (
