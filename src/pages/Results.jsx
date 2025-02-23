@@ -72,7 +72,7 @@ const Results = () => {
                     </button>
                   </div>
                 ) : (
-                  <div className='m-3' />
+                  <div key={post.id} className='m-3' />
                 )}
               </div>
             </div>
