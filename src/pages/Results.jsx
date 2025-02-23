@@ -27,7 +27,7 @@ const Results = () => {
   };
 
   const openViewHandler = async (id, isPublic) => {
-    updateTestResultVisibility(id, !isPublic);
+    await updateTestResultVisibility(id, !isPublic);
   };
 
   return (
