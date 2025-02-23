@@ -8,12 +8,15 @@ export const getTestResults = async () => {
 
 export const createTestResult = async (resultData) => {
   const response = await axios.post(MBTI_API_URL, resultData);
+  return response;
 };
 
 export const deleteTestResult = async (id) => {
   const response = await axios.delete(MBTI_API_URL + `/${id}`);
+  return response;
 };
 
 export const updateTestResultVisibility = async (id, isPublic) => {
   const response = await axios.patch(MBTI_API_URL + `/${id}`, { isPublic });
+  return response;
 };

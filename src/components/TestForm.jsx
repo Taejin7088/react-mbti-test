@@ -32,7 +32,7 @@ const TestForm = ({ setUserMbtiDescription }) => {
   };
 
   //제출하기 눌렀을 때 핸들러
-  const submitHandler = () => {
+  const submitHandler = async () => {
     const resultAnswers = Object.values(answers);
     if (resultAnswers.length < 20) {
       alert('모든 문항을 선택해야합니다.');
@@ -51,7 +51,7 @@ const TestForm = ({ setUserMbtiDescription }) => {
       isPublic: false,
       mbti: mbti,
     };
-    createTestResult(testResult);
+    await createTestResult(testResult);
 
     //해당하는 mbti에 설명을 리턴해주는 함수
     setUserMbtiDescription(mbtiDescriptions[mbti]);
