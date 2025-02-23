@@ -1,5 +1,3 @@
-import { mbtiDescriptions } from '../data/mbtiDescriptions';
-
 export const calculateMBTI = (answers) => {
   // 각 MBTI 유형에 대한 점수 초기화
   const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };

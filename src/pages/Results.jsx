@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import {
   deleteTestResult,
   getTestResults,
@@ -6,28 +5,48 @@ import {
 } from '../api/mbtiApi';
 import { mbtiDescriptions } from '../data/mbtiDescriptions';
 import { useSelector } from 'react-redux';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 const Results = () => {
   const { userId } = useSelector((state) => state.auth);
-  const [posts, setPosts] = useState([]);
+  const queryClient = useQueryClient();
+  const { mutate: deleteMutate } = useMutation({
+    mutationFn: deleteTestResult,
+    onSuccess: () => {
+      queryClient.invalidateQueries(['mbti']);
+    },
+  });
 
-  useEffect(() => {
-    const getData = async () => {
-      const data = await getTestResults();
-      setPosts(data);
-    };
-    getData();
-  }, [posts]);
+  const { mutate: updateMutate } = useMutation({
+    mutationFn: updateTestResultVisibility,
+    onSuccess: () => {
+      queryClient.invalidateQueries(['mbti']);
+    },
+  });
 
-  const deleteHandler = async (id) => {
-    //여기 어웨이트 있어야하는지도
-    await deleteTestResult(id);
-    //필터로 바꾼 배열을 넣는게 좋은지 아니면 그냥 데이터요청해서 불러오는게 좋은지
-    setPosts([]);
+  const {
+    data: posts,
+    isPending,
+    isError,
+  } = useQuery({
+    queryKey: ['mbti'],
+    queryFn: getTestResults,
+  });
+
+  if (isPending) {
+    return <div>로딩중입니다...</div>;
+  }
+
+  if (isError) {
+    return <div>데이터 조회 중 오류가 발생 했습니다.</div>;
+  }
+
+  const deleteHandler = (id) => {
+    deleteMutate(id);
   };
 
-  const openViewHandler = async (id, isPublic) => {
-    await updateTestResultVisibility(id, !isPublic);
+  const openViewHandler = (id, isPublic) => {
+    updateMutate(id, !isPublic);
   };
 
   return (

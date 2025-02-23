@@ -1,13 +1,20 @@
 import { useState } from 'react';
 import { questions } from '../data/questions';
 import { calculateMBTI } from '../utils/mbtiCalculator';
-import { mbtiDescriptions } from '../data/mbtiDescriptions';
 import { useSelector } from 'react-redux';
 import { createTestResult } from '../api/mbtiApi';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const TestForm = ({ setUserMbti }) => {
   const [answers, setAnswer] = useState({});
   const { userId, nickname } = useSelector((state) => state.auth);
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: createTestResult,
+    onSuccess: () => {
+      queryClient.invalidateQueries(['mbti']);
+    },
+  });
 
   //체크박스와 라벨을 눌렀을때 핸들러
   const checkAnserHandler = (e, question) => {
@@ -32,7 +39,7 @@ const TestForm = ({ setUserMbti }) => {
   };
 
   //제출하기 눌렀을 때 핸들러
-  const submitHandler = async () => {
+  const submitHandler = () => {
     const resultAnswers = Object.values(answers);
     if (resultAnswers.length < 20) {
       alert('모든 문항을 선택해야합니다.');
@@ -51,8 +58,7 @@ const TestForm = ({ setUserMbti }) => {
       isPublic: false,
       mbti: mbti,
     };
-    await createTestResult(testResult);
-
+    mutate(testResult);
     //해당하는 mbti에 설명을 리턴해주는 함수
     setUserMbti(mbti);
   };
@@ -71,7 +77,7 @@ const TestForm = ({ setUserMbti }) => {
               {question.options.map((option, idx) => {
                 //문항을 표시하는 배열 리턴
                 return (
-                  <div key={`${question.id}+${idx}`} className='pl-7'>
+                  <div key={`${question.id}+${idx}`} className='px-7'>
                     <div
                       onClick={(e) => divCheckHandler(e, question)}
                       className='border-solid border p-4 m-1 rounded-xl'
