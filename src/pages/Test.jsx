@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { questions } from '../data/questions';
+import { calculateMBTI } from '../utils/mbtiCalculator';
+import { mbtiDescriptions } from '../data/mbtiDescriptions';
 
 // {
 //   id: 1,
@@ -28,6 +30,11 @@ const Test = () => {
     const tempAnswer = { ...answer };
     tempAnswer[question.id] = { type: question.type, answer: e.target.value };
     setAnswer(tempAnswer);
+  };
+
+  const submitHandler = () => {
+    const mbtiResult = calculateMBTI(Object.values(answer));
+    console.log('MBTI 결과:', mbtiDescriptions[mbtiResult]); // 예: "MBTI 결과: ESTJ"
   };
 
   return (
@@ -65,6 +72,12 @@ const Test = () => {
             </div>
           );
         })}
+        <button
+          onClick={submitHandler}
+          className='bg-red-500 border rounded-md p-5 mt-[50px] mb-[200px] text-white'
+        >
+          제출하기
+        </button>
       </div>
     </section>
   );
