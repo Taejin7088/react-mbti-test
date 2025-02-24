@@ -7,6 +7,7 @@ import { QUERY_KEY } from '../../constants/queryKey';
 
 export const useMbitMutate = () => {
   const queryClient = useQueryClient();
+
   const { mutate: deleteMbtiMutate } = useMutation({
     mutationFn: deleteTestResult,
     onSuccess: () => {

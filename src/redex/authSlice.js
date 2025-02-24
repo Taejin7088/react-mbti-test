@@ -14,8 +14,14 @@ const auth = createSlice({
       state.userId = payload.userId;
       state.isLogin = !!sessionStorage.getItem('token');
     },
+    logOut: (state) => {
+      state.nickname = '';
+      state.userId = '';
+      state.isLogin = false;
+      sessionStorage.clear;
+    },
   },
 });
 // setIsLogin,setUserInfo
-export const { setIsLogin, setUserInfo } = auth.actions;
+export const { logOut, setUserInfo } = auth.actions;
 export default auth.reducer;
