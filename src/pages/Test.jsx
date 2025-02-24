@@ -12,14 +12,14 @@ const Test = () => {
   return userMbti ? (
     <>
       <section className='flex flex-col bg-white mx-auto items-center rounded-xl w-[100%] h-[100%] md:w-[90%] md:mt-10 md:h-auto'>
-        <div className='flex flex-col w-[50%]'>
+        <div className='flex flex-col md:w-[50%] w-[80%]'>
           <div className='py-7 mt-8 text-3xl font-semibold'>
             테스트 결과 : {userMbti}
           </div>
           <div className='py-7 mb:text-3xl'>{mbtiDescriptions[userMbti]}</div>
         </div>
         <Link
-          className='bg-red-500 border rounded-md w-[50%] p-5 m-5 mb-[50px] text-white flex justify-center items-center'
+          className='bg-red-500 border rounded-md md:w-[50%] w-[80%] p-5 m-5 mb-[50px] text-white flex justify-center items-center'
           to='/results'
         >
           <button className=''>결과 페이지로 이동하기</button>

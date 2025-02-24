@@ -12,19 +12,25 @@ const LoginUserHeader = () => {
   };
 
   return (
-    <div className='flex items-center'>
+    <div className='flex items-center md:gap-0 gap-4'>
       <Link to='/profile'>
-        <div className='mr-6 text-red-500 text-b font-bold'>프로필</div>
+        <div className='md:mr-6 md:text-lg text-sm text-red-500 text-b font-bold'>
+          프로필
+        </div>
       </Link>
 
       <Link to='/test'>
-        <div className='mr-6 text-red-500 font-bold'>테스트</div>
+        <div className='md:mr-6 md:text-lg text-sm text-red-500 font-bold'>
+          테스트
+        </div>
       </Link>
       <Link to='/results'>
-        <div className='mr-6 text-red-500 font-bold'>결과보기</div>
+        <div className='md:mr-6 md:text-lg text-sm text-red-500 font-bold'>
+          결과보기
+        </div>
       </Link>
       <div
-        className='mr-[30px] p-3 bg-red-500 rounded-xl text-white cursor-pointer'
+        className='mr-[30px] md:p-3 p-2 md:text-lg text-sm bg-red-500 rounded-xl text-white cursor-pointer'
         onClick={logOutHandler}
       >
         로그아웃
