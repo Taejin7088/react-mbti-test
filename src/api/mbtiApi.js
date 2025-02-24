@@ -5,21 +5,21 @@ const mbtiApi = axios.create({
   baseURL: MBTI_API_URL,
 });
 
-const headers = {
-  'Content-Type': 'application/json',
-  Authorization: `Bearer ${sessionStorage.getItem('tokend')}`,
-};
-
 //mbti api 요청을 보내기전 유저 토큰확인
 mbtiApi.interceptors.request.use(
   async (config) => {
     const { data } = await axios.get(AUTH_API_URL + '/user', {
-      headers,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+      },
     });
     if (data?.success) {
       return config;
     }
-    return Promise.reject('잘못된 접근입니다. 로그인 페이지로 이동합니다.');
+    return Promise.reject(
+      new Error('잘못된 접근입니다. 로그인 페이지로 이동합니다.')
+    );
   },
   (error) => {
     Promise.reject(error);
@@ -27,12 +27,8 @@ mbtiApi.interceptors.request.use(
 );
 
 export const getTestResults = async () => {
-  try {
-    const response = await mbtiApi.get();
-    return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  const response = await mbtiApi.get();
+  return response.data;
 };
 
 export const createTestResult = async (resultData) => {
