@@ -4,15 +4,17 @@ import { calculateMBTI } from '../utils/mbtiCalculator';
 import { useSelector } from 'react-redux';
 import { createTestResult } from '../api/mbtiApi';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { QUERY_KEY } from '../constants/queryKey';
 
 const TestForm = ({ setUserMbti }) => {
   const [answers, setAnswer] = useState({});
   const { userId, nickname } = useSelector((state) => state.auth);
   const queryClient = useQueryClient();
+
   const { mutate } = useMutation({
     mutationFn: createTestResult,
     onSuccess: () => {
-      queryClient.invalidateQueries(['mbti']);
+      queryClient.invalidateQueries([QUERY_KEY.MBTI]);
     },
   });
 
@@ -58,7 +60,9 @@ const TestForm = ({ setUserMbti }) => {
       isPublic: false,
       mbti: mbti,
     };
+
     mutate(testResult);
+
     //해당하는 mbti에 설명을 리턴해주는 함수
     setUserMbti(mbti);
   };

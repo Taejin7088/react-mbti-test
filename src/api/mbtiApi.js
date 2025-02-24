@@ -32,7 +32,7 @@ export const getTestResults = async () => {
 };
 
 export const createTestResult = async (resultData) => {
-  const response = await mbtiApi.post(resultData);
+  const response = await mbtiApi.post('/', resultData);
   return response;
 };
 
