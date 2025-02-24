@@ -1,53 +1,26 @@
-import {
-  deleteTestResult,
-  getTestResults,
-  updateTestResultVisibility,
-} from '../api/mbtiApi';
 import { mbtiDescriptions } from '../data/mbtiDescriptions';
 import { useSelector } from 'react-redux';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMbitMutate } from '../hooks/mutations/useMbtiMutate';
+import { useMbtiQuery } from '../hooks/querys/useMbtiQuery';
 
 const Results = () => {
   const { userId } = useSelector((state) => state.auth);
-  const queryClient = useQueryClient();
-  const { mutate: deleteMutate } = useMutation({
-    mutationFn: deleteTestResult,
-    onSuccess: () => {
-      queryClient.invalidateQueries(['mbti']);
-    },
-  });
-
-  const { mutate: updateMutate } = useMutation({
-    mutationFn: updateTestResultVisibility,
-    onSuccess: () => {
-      queryClient.invalidateQueries(['mbti']);
-    },
-  });
-
-  const {
-    data: posts,
-    isPending,
-    isError,
-  } = useQuery({
-    queryKey: ['mbti'],
-    queryFn: getTestResults,
-  });
+  const { deleteMbtiMutate, updateMbitIsPublicMutate } = useMbitMutate();
+  const { data: posts, isPending, isError } = useMbtiQuery();
 
   if (isPending) {
     return <div>로딩중입니다...</div>;
   }
-
   if (isError) {
     return <div>데이터 조회 중 오류가 발생 했습니다.</div>;
   }
 
   const deleteHandler = (id) => {
-    deleteMutate(id);
+    deleteMbtiMutate(id);
   };
 
   const openViewHandler = (id, isPublic) => {
-    console.log(isPublic);
-    updateMutate({ id: id, isPublic: !isPublic });
+    updateMbitIsPublicMutate({ id, isPublic: !isPublic });
   };
 
   return (
