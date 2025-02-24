@@ -46,7 +46,8 @@ const Results = () => {
   };
 
   const openViewHandler = (id, isPublic) => {
-    updateMutate(id, !isPublic);
+    console.log(isPublic);
+    updateMutate({ id: id, isPublic: !isPublic });
   };
 
   return (

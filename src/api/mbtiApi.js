@@ -16,7 +16,8 @@ export const deleteTestResult = async (id) => {
   return response;
 };
 
-export const updateTestResultVisibility = async (id, isPublic) => {
+export const updateTestResultVisibility = async ({ id, isPublic }) => {
+  console.log('>>>.', isPublic);
   const response = await axios.patch(MBTI_API_URL + `/${id}`, { isPublic });
   return response;
 };
