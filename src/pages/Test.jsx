@@ -18,14 +18,6 @@ const Test = () => {
     alert('링크가 복사되었습니다.');
   };
 
-  const faceBookShareHandler = () => {
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-      resultLink
-    )}`;
-    console.log('facebookUrl', facebookUrl);
-    window.open(facebookUrl, '_blank', 'width=600,height=400');
-  };
-
   return userMbti ? (
     <>
       <section className='flex flex-col bg-white mx-auto items-center rounded-xl w-[100%] h-[100%] md:w-[90%] md:mt-10 md:h-auto'>
@@ -44,12 +36,6 @@ const Test = () => {
         <button
           onClick={copyResultLinkHandler}
           className='bg-red-500 border rounded-md md:w-[50%] w-[80%] p-5 mb-5 text-white flex justify-center items-center'
-        >
-          테스트 결과 공유링크 복사하기
-        </button>
-        <button
-          onClick={faceBookShareHandler}
-          className='bg-red-500 border rounded-md md:w-[50%] w-[80%] p-5 mb-[50px] text-white flex justify-center items-center'
         >
           테스트 결과 공유링크 복사하기
         </button>

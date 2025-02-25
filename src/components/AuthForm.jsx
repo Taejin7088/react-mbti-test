@@ -6,6 +6,7 @@ import { setUserInfo } from '../redex/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 const AuthForm = ({ mode, children }) => {
+  //인풋정보를 담을 state
   const [inputData, setInputData] = useState({
     id: '',
     password: '',
@@ -15,20 +16,24 @@ const AuthForm = ({ mode, children }) => {
   const disPatch = useDispatch();
   const navigate = useNavigate();
 
+  //로그인하기 버튼을 눌렀을때 실행
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
+      //props로 받은 mode가 LOGIN 로그인 API실행
       if (mode === LOGIN) {
         const data = await login(inputData);
         if (data.code) {
           throw data;
         }
+        //새로고침되고나서도 쓰기 위해 토큰,id,nick네임저장하기
         sessionStorage.setItem('token', data.accessToken);
         sessionStorage.setItem('nickname', data.nickname);
         sessionStorage.setItem('userId', data.userId);
         disPatch(setUserInfo(data));
         alert('로그인성공');
       }
+      //props로 받은 mode가 SIGNUP 회원가입 API실행
       if (mode === SIGNUP) {
         const data = await register(inputData);
         if (data.code) {
@@ -73,6 +78,7 @@ const AuthForm = ({ mode, children }) => {
             className='bg-white border rounded-md p-5'
           />
 
+          {/* mode가 SIGNUP 일 때만 보이는 입력폼 */}
           {mode === SIGNUP ? (
             <input
               type='text'

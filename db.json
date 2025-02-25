@@ -5,7 +5,7 @@
       "time": "2025. 2. 23. 오후 10:06:30",
       "nickname": "123123123123",
       "userId": "12345",
-      "isPublic": true,
+      "isPublic": false,
       "mbti": "ESFJ"
     },
     {
@@ -111,6 +111,14 @@
       "userId": "11111",
       "isPublic": false,
       "mbti": "ISTJ"
+    },
+    {
+      "id": "451d",
+      "time": "2025. 2. 25. 오후 2:19:07",
+      "nickname": "123",
+      "userId": "12345",
+      "isPublic": false,
+      "mbti": "ESTJ"
     }
   ]
 }
