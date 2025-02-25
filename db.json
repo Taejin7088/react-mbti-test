@@ -1,0 +1,84 @@
+{
+  "testResults": [
+    {
+      "id": "040f",
+      "time": "2025. 2. 23. 오후 10:06:30",
+      "nickname": "123123123123",
+      "userId": "12345",
+      "isPublic": true,
+      "mbti": "ESFJ"
+    },
+    {
+      "id": "73b5",
+      "time": "2025. 2. 23. 오후 10:24:13",
+      "nickname": "11111",
+      "userId": "11111",
+      "isPublic": false,
+      "mbti": "ISFJ"
+    },
+    {
+      "id": "e9fe",
+      "time": "2025. 2. 24. 오전 1:12:56",
+      "nickname": "111111",
+      "userId": "111111",
+      "isPublic": true,
+      "mbti": "ESTJ"
+    },
+    {
+      "id": "50fa",
+      "time": "2025. 2. 24. 오후 7:02:14",
+      "nickname": "123123123123",
+      "userId": "12345",
+      "isPublic": true,
+      "mbti": "ESFJ"
+    },
+    {
+      "id": "b016",
+      "time": "2025. 2. 24. 오후 11:14:46",
+      "nickname": "123123123123",
+      "userId": "12345",
+      "isPublic": false,
+      "mbti": "INFJ"
+    },
+    {
+      "id": "93f1",
+      "time": "2025. 2. 25. 오전 9:28:14",
+      "nickname": "123",
+      "userId": "12345",
+      "isPublic": false,
+      "mbti": "ISFJ"
+    },
+    {
+      "id": "5c95",
+      "time": "2025. 2. 25. 오전 9:38:06",
+      "nickname": "123",
+      "userId": "12345",
+      "isPublic": true,
+      "mbti": "ESTJ"
+    },
+    {
+      "id": "7ff7",
+      "time": "2025. 2. 25. 오전 9:44:23",
+      "nickname": "123",
+      "userId": "12345",
+      "isPublic": false,
+      "mbti": "ESTJ"
+    },
+    {
+      "id": "3f5b",
+      "time": "2025. 2. 25. 오전 9:45:01",
+      "nickname": "111111",
+      "userId": "111111",
+      "isPublic": false,
+      "mbti": "ESTJ"
+    },
+    {
+      "id": "e6d5",
+      "time": "2025. 2. 25. 오전 10:25:25",
+      "nickname": "123",
+      "userId": "12345",
+      "isPublic": false,
+      "mbti": "ESTJ"
+    }
+  ]
+}
