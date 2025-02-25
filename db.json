@@ -79,6 +79,38 @@
       "userId": "12345",
       "isPublic": false,
       "mbti": "ESTJ"
+    },
+    {
+      "id": "4c9e",
+      "time": "2025. 2. 25. 오후 12:37:49",
+      "nickname": "11111",
+      "userId": "11111",
+      "isPublic": false,
+      "mbti": "ENFJ"
+    },
+    {
+      "id": "e34c",
+      "time": "2025. 2. 25. 오후 12:49:24",
+      "nickname": "11111",
+      "userId": "11111",
+      "isPublic": false,
+      "mbti": "ISFP"
+    },
+    {
+      "id": "0b9f",
+      "time": "2025. 2. 25. 오후 1:05:14",
+      "nickname": "11111",
+      "userId": "11111",
+      "isPublic": false,
+      "mbti": "ESTJ"
+    },
+    {
+      "id": "0292",
+      "time": "2025. 2. 25. 오후 1:08:07",
+      "nickname": "11111",
+      "userId": "11111",
+      "isPublic": false,
+      "mbti": "ISTJ"
     }
   ]
 }
