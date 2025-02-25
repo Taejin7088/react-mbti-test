@@ -2,7 +2,7 @@
 
 ### 🎯 React 심화 개인 과제 \_ MBTI 테스트
 
-- 배포 링크 : [https://react-mbti-test-a85864p4w-taejin7088s-projects.vercel.app/](https://react-mbti-test-a85864p4w-taejin7088s-projects.vercel.app/)  
+- 배포 링크 : [https://react-mbti-test-eosin.vercel.app/](https://react-mbti-test-eosin.vercel.app/)  
   <br />
 
 ## 🖥 프로젝트 소개
