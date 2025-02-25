@@ -2,16 +2,20 @@ import { mbtiDescriptions } from '../data/mbtiDescriptions';
 import { useMbitMutate } from '../hooks/mutations/useMbtiMutate';
 
 const ResultsItem = ({ post, userId }) => {
+  //텐스택쿼리의 mutete함수 불러오는 훅
   const { deleteMbtiMutate, updateMbitIsPublicMutate } = useMbitMutate();
 
+  //id값을 기준으로 MBIT 포스터를 지우는 API요청을 실행
   const deleteHandler = (id) => {
     deleteMbtiMutate(id);
   };
 
+  //id값을 기준으로 MBIT 포스터의 공개여부를 수정하는 API요청을 실행
   const openViewHandler = (id, isPublic) => {
     updateMbitIsPublicMutate({ id, isPublic: !isPublic });
   };
 
+  //props로 내려받은 MBTI 포스터정보로 포스터를 리턴
   return (
     <div className='bg-blue-950 w-[70%] mb-10 rounded-xl'>
       <div className='flex flex-col'>

@@ -6,6 +6,7 @@ import {
 } from '../../api/mbtiApi';
 import { QUERY_KEY } from '../../constants/queryKey';
 
+//mutate 함수를 리턴하는 훅
 export const useMbitMutate = () => {
   const queryClient = useQueryClient();
 

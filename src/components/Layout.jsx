@@ -13,6 +13,7 @@ const Layout = ({ children }) => {
           <div className='m-[30px] text-red-500'>홈</div>
         </Link>
 
+        {/* 로그인상태와 비로그인 상태를 구별하여 해더에 표시되는 요소 전환 */}
         {isLogin ? (
           <LoginUserHeader />
         ) : (

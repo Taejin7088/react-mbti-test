@@ -10,10 +10,11 @@ const Test = () => {
   const [userMbti, setUserMbti] = useState('');
   const { nickname } = useSelector((state) => state.auth);
 
-  //글리치 배포되면 링크 바꾸기 > DEPLOYMENT_URL
-  const link = `localhost:5173/`;
-  const resultLink = `${link}mbti-share?nickname=${nickname}&mbti=${userMbti}`;
   const copyResultLinkHandler = async () => {
+    //글리치 배포되면 링크 바꾸기 > DEPLOYMENT_URL
+    const link = `localhost:5173/`;
+    //MbitShare페이지에 쿼리스트링을 전달할 수 있게 링크를 가공해서 클립보드에 저장시키기
+    const resultLink = `${link}mbti-share?nickname=${nickname}&mbti=${userMbti}`;
     await navigator.clipboard.writeText(resultLink);
     alert('링크가 복사되었습니다.');
   };

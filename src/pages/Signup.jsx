@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import AuthForm from '../components/AuthForm';
 import { SIGNUP } from '../constants/mode';
 
+//회원가입 페이지 AuthForm을 SIGNUP 모드로 실행
 const Signup = () => {
   return (
     <>

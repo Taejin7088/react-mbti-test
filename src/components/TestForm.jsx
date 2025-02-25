@@ -5,9 +5,12 @@ import { useSelector } from 'react-redux';
 import { useMbitMutate } from '../hooks/mutations/useMbtiMutate';
 
 const TestForm = ({ setUserMbti }) => {
+  //유저가 선택한 값을 저장할 state
   const [answers, setAnswer] = useState({});
+
   const { userId, nickname } = useSelector((state) => state.auth);
 
+  //텐스택쿼리의 mutete함수 불러오는 훅
   const { createMbtiMutate } = useMbitMutate();
 
   //체크박스와 라벨을 눌렀을때 핸들러
@@ -34,17 +37,23 @@ const TestForm = ({ setUserMbti }) => {
 
   //제출하기 눌렀을 때 핸들러
   const submitHandler = () => {
+    //{질문id값 :  { type: "E/I", answer: E } }  로저장되어있는 객체의 벨류값을
+    //[ { type: "E/I", answer: E }, ...] 배열형태로 만들기
     const resultAnswers = Object.values(answers);
+
+    //배열의 길이가 20이 아니면 모든문항을 선택하라는 알람과함께 제출 막기
     if (resultAnswers.length < 20) {
       alert('모든 문항을 선택해야합니다.');
       return;
     }
 
-    //결과값으로 mbti 계산하는 함수
+    //결과값(resultAnswers)으로 mbti 계산하는 함수
     const mbti = calculateMBTI(resultAnswers);
 
+    //한국시간을 기준으로 시간 생성
     const now = new Date();
     const formattedDate = now.toLocaleString('ko-KR');
+
     const testResult = {
       time: formattedDate,
       nickname: nickname,
@@ -53,6 +62,7 @@ const TestForm = ({ setUserMbti }) => {
       mbti: mbti,
     };
 
+    //포스터를 추가하는 API요청을 실행
     createMbtiMutate(testResult);
 
     //해당하는 mbti에 설명을 리턴해주는 함수

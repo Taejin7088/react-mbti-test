@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+//메인페이지
 const Home = () => {
   return (
     <section className='flex flex-col items-center'>

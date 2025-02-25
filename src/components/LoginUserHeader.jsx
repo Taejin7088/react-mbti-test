@@ -1,16 +1,18 @@
 import { useDispatch } from 'react-redux';
-import { setUserInfo } from '../redex/authSlice';
+import { logOut } from '../redex/authSlice';
 import { Link, useNavigate } from 'react-router-dom';
 
 const LoginUserHeader = () => {
-  const disPatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  //로그아웃을 클릭했을때
   const logOutHandler = () => {
-    sessionStorage.clear();
-    disPatch(setUserInfo(''));
+    //세션스토리지를 비우고, 전역상태로 관리중인 값들 로그아웃상태로 변경
+    dispatch(logOut());
     navigate('/login');
   };
-
+  //
   return (
     <div className='flex items-center md:gap-0 gap-4'>
       <Link to='/profile'>

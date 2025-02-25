@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import AuthForm from '../components/AuthForm';
 import { LOGIN } from '../constants/mode';
 
+//로그인 페이지 AuthForm을 LOGIN 모드로 리턴받아서 사용됨
 const Login = () => {
   return (
     <>

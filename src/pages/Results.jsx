@@ -2,13 +2,17 @@ import { useSelector } from 'react-redux';
 import { useMbtiQuery } from '../hooks/querys/useMbtiQuery';
 import ResultsItem from '../components/ResultsItem';
 
+//MBTI 포스터들을 그려주는 페이지
 const Results = () => {
   const { userId } = useSelector((state) => state.auth);
   const { data: posts, isPending, isError } = useMbtiQuery();
 
+  //useMbtiQuery 에서 요청중인 데이터가 아직 반환받지 않았을 때 리턴
   if (isPending) {
     return <div>로딩중입니다...</div>;
   }
+
+  //useMbtiQuery 요청이 실패했을 때 리턴
   if (isError) {
     return <div>데이터 조회 중 오류가 발생 했습니다.</div>;
   }

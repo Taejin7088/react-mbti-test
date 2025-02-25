@@ -1,14 +1,17 @@
-import React from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { mbtiDescriptions } from '../data/mbtiDescriptions';
 
+//Test페이지에서 복사한 링크를 입력하면 보이는 페이지
 const MbtiShare = () => {
   const [searchParams] = useSearchParams();
+
+  //링크의 쿼리스트링으로 mbti와 닉네임을 받아와서 페이지에 그려줌
   const mbti = searchParams.get('mbti');
   const nickname = searchParams.get('nickname');
 
+  //쿼리스트링에 둘중하나의 값이라도 비어있으면 표시
   if (!mbti || !nickname) {
-    return <p>잘못된 접근입니다.</p>;
+    return <div>잘못된 접근입니다.</div>;
   }
 
   return (
