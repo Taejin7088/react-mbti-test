@@ -6,6 +6,7 @@ import Signup from '../pages/Signup';
 import Test from '../pages/Test';
 import Results from '../pages/Results';
 import { useSelector } from 'react-redux';
+import MbtiShare from '../pages/MbtiShare';
 
 const PrivateRoute = ({ isLogin }) => {
   //해당 페이지에 접근하는데 로그인 안했으면 로그인페이지로 보냄
@@ -29,7 +30,7 @@ const Router = () => {
   return (
     <Routes element={<Home />}>
       <Route path='/' element={<Home />} />
-
+      <Route path='/mbti-share' element={<MbtiShare />} />
       <Route element={<PublicRoute isLogin={isLogin} />}>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />

@@ -1,4 +1,3 @@
-import React from 'react';
 import { mbtiDescriptions } from '../data/mbtiDescriptions';
 import { useMbitMutate } from '../hooks/mutations/useMbtiMutate';
 
