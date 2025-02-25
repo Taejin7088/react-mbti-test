@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
+  createTestResult,
   deleteTestResult,
   updateTestResultVisibility,
 } from '../../api/mbtiApi';
@@ -22,5 +23,12 @@ export const useMbitMutate = () => {
     },
   });
 
-  return { deleteMbtiMutate, updateMbitIsPublicMutate };
+  const { mutate: createMbtiMutate } = useMutation({
+    mutationFn: createTestResult,
+    onSuccess: () => {
+      queryClient.invalidateQueries([QUERY_KEY.MBTI]);
+    },
+  });
+
+  return { deleteMbtiMutate, updateMbitIsPublicMutate, createMbtiMutate };
 };
